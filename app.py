@@ -39,6 +39,11 @@ if uploaded_file:
     # ----------------------------
     loader = PyPDFLoader(file_path)
     documents = loader.load()
+    st.write("Total documents:", len(documents))
+
+    for doc in documents:
+        st.write("Text length:", len(doc.page_content))
+        st.write("Text preview:", doc.page_content[:200])
 
     # ----------------------------
     # Split PDF into chunks
