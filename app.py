@@ -52,8 +52,15 @@ if uploaded_file:
     # ----------------------------
     # BM25 Retriever
     # ----------------------------
+    if len(chunks) == 0:
+        st.error("No chunks were created from the PDF.")
+        st.stop()
+
     retriever = BM25Retriever.from_documents(chunks)
     retriever.k = 4
+    chunks = splitter.split_documents(documents)
+    st.write("Documents:", len(documents))
+    st.write("Chunks:", len(chunks))
 
     st.success("Document indexed successfully (BM25)")
     st.write(f"Total chunks created: {len(chunks)}")
