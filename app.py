@@ -79,7 +79,7 @@ if uploaded_file:
                 st.info("No related content found in the uploaded document. (No answer provided)")
             else:
                 llm = ChatGroq(
-                    model="llama-3.1-8b-instant",
+                    model="openai/gpt-oss-20b",
                     temperature=0
                 )
                 prompt = f"""
